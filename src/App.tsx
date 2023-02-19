@@ -1,4 +1,5 @@
 import "./App.css";
+import { GrugObjectApp } from "./useGrug/example/GrugObjectApp";
 import { GrugTodoApp } from "./useGrug/example/GrugTodoApp";
 import ViewModelTodoApp from "./useSyncViewModel/example/ViewModelTodoApp";
 
@@ -15,6 +16,12 @@ function App() {
         </h1>
         <div>
             <GrugTodoApp/>
+        </div>
+        <h1>
+            useGrugObject
+        </h1>
+        <div>
+            <GrugObjectApp/>
         </div>
     </div>
 }

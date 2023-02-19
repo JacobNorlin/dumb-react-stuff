@@ -1,9 +1,5 @@
-# useGrug
+import { useGrugObject } from "../useGrug";
 
-![](assets/useGrugObject.png | width=500)
-
-
-```tsx
 export function GrugObjectApp() {
     const grugObj = useGrugObject({
         count: 0,
@@ -25,5 +21,3 @@ export function GrugObjectApp() {
         </div>
     );
 }
-
-```

@@ -1,7 +1,7 @@
 type Ctor = { new (...args: any[]): {} };
 type VoidFn = () => void;
 
-class Notifier {
+export class Notifier {
     listeners: VoidFn[] = [];
 
     addChangeListener(l: () => void) {

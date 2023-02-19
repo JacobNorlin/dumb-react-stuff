@@ -1,4 +1,5 @@
 # useGrug
+*At least you know it's bad*
 
 <img src="https://github.com/JacobNorlin/dumb-react-stuff/blob/main/src/useGrug/assets/useGrugObject.png?raw=true" width=800px>
 

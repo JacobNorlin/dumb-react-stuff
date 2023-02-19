@@ -1,9 +1,51 @@
 import { useCallback, useEffect, useSyncExternalStore } from "react";
-import { ViewModelBase } from "./example/ViewModelBase";
-import { ViewModelLike } from "./util";
 
+class StoreHandler{
+    listeners: (() => void)[] = [];
 
-export function useSyncViewModel(viewModel: ViewModelLike) {
+    addListener(l: () => void) {
+        this.listeners.push(l);
+    }
+
+    removeListener(l: () => void) {
+        this.listeners.splice(this.listeners.indexOf(l), 1);
+    }
+
+    notify() {
+        this.listeners.forEach(l => l());
+    }
+}
+
+function getProxiedArray(arr: any[]) {
+    const arrayHandler: ProxyHandler<any[]> = {
+        apply(target: any[], thisArg: any, args: any[]) {
+            targ
+        }
+    }
+}
+
+function reactify<T extends object>(clazz: T) {
+    const storeHandler = new StoreHandler();
+    const handler: ProxyHandler<T> = {
+        set(obj: any, prop: string, value: any){
+            obj[prop] = value;
+            storeHandler.notify();
+            return true;
+        },
+        get(target, prop) {
+            const value = (target as unknown as any)[prop];
+
+            if (Array.isArray(value)) {
+                
+            }
+
+        }
+    }
+
+    return new Proxy(clazz, handler);
+}
+
+export function useGrug<T>(clazz: T) {
     let someValue = 0;
     //We don't actually care about the snapshot retuned by the "store" since
     //the viewmodel already contains the state we care about. Instead we

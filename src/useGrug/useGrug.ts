@@ -8,13 +8,11 @@ export function useGrug(grugClass: any) {
 }
 
 export function useGrugObject<T extends Record<string, any>>(obj: T) {
-
-    function stuff(out: Record<any, any>, o: T) {
-
+    function addGrugObjWrapper(out: Record<any, any>, o: T) {
         for (let key in o) {
             const val = o[key];
-            if (Object.prototype.toString.call(val) === '[object Object]') {
-                out[key] = stuff(out, val);
+            if (Object.prototype.toString.call(val) === "[object Object]") {
+                out[key] = addGrugObjWrapper(out, val);
             } else {
                 Object.defineProperty(out, key, {
                     get() {
@@ -22,11 +20,10 @@ export function useGrugObject<T extends Record<string, any>>(obj: T) {
                     },
                     set(val: any) {
                         o[key] = val;
-                        this[GrugStuff].notifier.notify()
-                    }
-                })
+                        this[GrugStuff].notifier.notify();
+                    },
+                });
             }
-
         }
 
         return out;
@@ -35,11 +32,11 @@ export function useGrugObject<T extends Record<string, any>>(obj: T) {
     const grugObject = useMemo(() => {
         let out = {
             [GrugStuff]: {
-                notifier: new Notifier()
-            }
-        } as Record<any, any>
+                notifier: new Notifier(),
+            },
+        } as Record<any, any>;
 
-        return stuff(out, obj);
+        return addGrugObjWrapper(out, obj);
     }, []);
 
     useGrug(grugObject);

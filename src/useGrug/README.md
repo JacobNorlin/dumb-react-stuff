@@ -1,6 +1,6 @@
 # useGrug
 
-![](assets/useGrugObject.png | width=500)
+<img src="https://github.com/JacobNorlin/dumb-react-stuff/blob/main/src/useGrug/assets/useGrugObject.png?raw=true" width=800px>
 
 
 ```tsx

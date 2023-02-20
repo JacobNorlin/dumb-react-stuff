@@ -1,6 +1,8 @@
 # useGrug
 *At least you know it's bad*
 
+Make (probably) any object automatically reactive in a react component.
+
 <img src="https://github.com/JacobNorlin/dumb-react-stuff/blob/main/src/useGrug/assets/useGrugObject.png?raw=true" width=800px>
 
 

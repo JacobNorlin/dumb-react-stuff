@@ -1,6 +1,7 @@
 import { useGrugObject } from "../useGrug";
 
 export function GrugObjectApp() {
+
     const grugObj = useGrugObject({
         count: 0,
         nested: {
@@ -18,6 +19,20 @@ export function GrugObjectApp() {
             <button onClick={() => (grugObj.nested.list = [...grugObj.nested.list, ":^)"])}>
                 List {grugObj.nested.list}
             </button>
+
+            <NestedComp nested={grugObj.nested}/>
         </div>
     );
+}
+
+
+const NestedComp = (props: { nested: { innerCount: number } }) => {
+    const nestedGrug = useGrugObject({
+        lol: 0,
+        nested: props.nested
+    });
+    return <div>
+        <button onClick={() => nestedGrug.nested.innerCount += 1}>Inner count</button>
+        <button onClick={() => nestedGrug.lol += 1}>wut {nestedGrug.lol}</button>
+        </div>
 }
